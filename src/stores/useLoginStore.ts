@@ -4,8 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { login as loginApi } from '@/apis/apiAuth';
 import { IUser } from '@/types/user/user';
 
-export const useLoginStore = create((set) => ({
-    login: async ({ email, password }: IUser) => {
+export interface LoginStore {
+    login: (user: IUser) => Promise<void>;
+    isLoading: boolean;
+}
+
+export const useLoginStore = create<LoginStore>((set) => ({
+    login: async ({ email, password }) => {
         const navigate = useNavigate();
 
         set({ isLoading: true });

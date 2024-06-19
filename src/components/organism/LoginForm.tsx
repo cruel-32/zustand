@@ -18,12 +18,6 @@ const LoginForm = () => {
     if (!email || !password) return;
     login(
       { email, password },
-      {
-        onSettled: () => {
-          setEmail('');
-          setPassword('');
-        },
-      },
     );
   };
 
